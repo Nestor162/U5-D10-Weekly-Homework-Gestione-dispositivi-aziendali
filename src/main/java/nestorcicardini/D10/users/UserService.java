@@ -17,8 +17,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
-	// Questo metodo serve per l'endpoin /users. Quindi sipuo scegliere il ruolo
-	// e creare dei nuovi admin
+	// Questo metodo serve per l'endpoin /users. Quindi si puo scegliere il
+	// ruolo e creare dei nuovi admin
 	public User createUser(RegisterUserPayload payload) {
 
 		// Prima devo verificare se su db già esiste l'email

@@ -2,6 +2,7 @@ package nestorcicardini.D10.users.payloads;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
@@ -27,6 +28,6 @@ public class RegisterUserPayload {
 	String password;
 
 	@NotNull(message = "Il ruolo non può essere Null")
-//	@Pattern(regexp = "ADMIN|USER", message = "Il ruolo deve essere 'ADMIN' o 'USER'")
+	@Pattern(regexp = "ADMIN|USER", message = "Il ruolo deve essere 'ADMIN' o 'USER'")
 	String userRole;
 }
