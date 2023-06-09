@@ -84,19 +84,4 @@ public class UserService {
 		userRepo.delete(found);
 	}
 
-//	public User createAdmin(RegisterUserPayload payload) {
-//
-//		// Prima devo verificare se su db già esiste l'email
-//		userRepo.findByEmail(payload.getEmail()).ifPresent(user -> {
-//			throw new BadRequestException(
-//					"The email " + user.getEmail() + " is already in use!");
-//		});
-//
-//		User createdUser = new User(payload.getSurname(), payload.getName(),
-//				payload.getSurname(), payload.getEmail(),
-//				payload.getPassword());
-//		createdUser.setRole(Role.ADMIN);
-//		return userRepo.save(createdUser);
-//	}
-
 }
