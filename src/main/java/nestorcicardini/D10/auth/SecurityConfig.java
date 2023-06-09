@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -33,8 +34,8 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(
 				auth -> auth.requestMatchers("/devices/**").authenticated());
 
-//		http.addFilterBefore(jwtAuthFilter,
-//				UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtAuthFilter,
+				UsernamePasswordAuthenticationFilter.class);
 
 		// Imposto la gestione delle sessioni come "STATELESS". Il token non
 		// verrà salvato su backend, verrà soltato inviato a frontend
