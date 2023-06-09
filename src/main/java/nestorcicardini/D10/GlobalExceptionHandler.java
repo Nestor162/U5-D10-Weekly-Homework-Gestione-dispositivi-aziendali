@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import nestorcicardini.D10.exceptions.BadRequestException;
+import nestorcicardini.D10.exceptions.NotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -15,6 +16,14 @@ public class GlobalExceptionHandler {
 			BadRequestException ex) {
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(ex.getMessage());
+	}
+
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<String> handleNotFoundException(
+			NotFoundException ex) {
+
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body(ex.getMessage());
 	}
 
@@ -34,11 +43,11 @@ public class GlobalExceptionHandler {
 //				.body(ex.getMessage());
 //	}
 
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<String> handleException(Exception ex) {
-
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-				.body("Errore generico sul server...");
-	}
+//	@ExceptionHandler(Exception.class)
+//	public ResponseEntity<String> handleException(Exception ex) {
+//
+//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//				.body("Errore generico sul server...");
+//	}
 
 }
