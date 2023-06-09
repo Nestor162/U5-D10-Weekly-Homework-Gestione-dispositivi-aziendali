@@ -25,4 +25,8 @@ public class RegisterUserPayload {
 
 	@NotNull(message = "La password non può essere Null")
 	String password;
+
+	@NotNull(message = "Il ruolo non può essere Null")
+//	@Pattern(regexp = "ADMIN|USER", message = "Il ruolo deve essere 'ADMIN' o 'USER'")
+	String userRole;
 }

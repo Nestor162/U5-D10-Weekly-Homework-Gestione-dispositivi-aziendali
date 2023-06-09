@@ -33,19 +33,20 @@ public class User implements UserDetails {
 	private String password;
 
 	@Enumerated(EnumType.STRING)
-	private Role role;
+	private UserRole role;
 
 	@OneToMany(mappedBy = "user")
 	private List<Device> devices;
 
 	public User(String username, String name, String surname, String email,
-			String password) {
+			String password, UserRole role) {
 		super();
 		this.username = username;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
+		this.role = role;
 	}
 
 	@Override

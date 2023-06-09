@@ -67,7 +67,8 @@ public class JWTUtils {
 		} catch (ExpiredJwtException e) {
 			throw new InvalidTokenException("Il token è scaduto");
 		} catch (Exception e) {
-			throw new InvalidTokenException(e.getMessage());
+			throw new InvalidTokenException(
+					"è sorto un errore con il token. Per favore fare il login nuovamente");
 		}
 	}
 

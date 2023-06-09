@@ -1,5 +1,5 @@
 package nestorcicardini.D10.users;
 
-public enum Role {
+public enum UserRole {
 	ADMIN, USER
 }

@@ -66,4 +66,10 @@ public class UserController {
 	public void deleteUser(@PathVariable UUID userId) {
 		userService.findByIdAndDelete(userId);
 	}
+
+	// 1. CREATE ADMIN (POST METHOD) - http://localhost:3001/users/admin
+	@PostMapping("/admin")
+	public User saveAdmin(@RequestBody @Validated RegisterUserPayload body) {
+		return userService.createUser(body);
+	}
 }
