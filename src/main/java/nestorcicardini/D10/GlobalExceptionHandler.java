@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import nestorcicardini.D10.exceptions.BadRequestException;
+import nestorcicardini.D10.exceptions.InvalidCredentialsException;
+import nestorcicardini.D10.exceptions.InvalidTokenException;
 import nestorcicardini.D10.exceptions.NotFoundException;
 
 @RestControllerAdvice
@@ -27,21 +29,21 @@ public class GlobalExceptionHandler {
 				.body(ex.getMessage());
 	}
 
-//	@ExceptionHandler(InvalidCredentialsException.class)
-//	public ResponseEntity<String> handleInvalidCredentialsException(
-//			InvalidCredentialsException ex) {
-//
-//		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-//				.body(ex.getMessage());
-//	}
-//
-//	@ExceptionHandler(InvalidTokenException.class)
-//	public ResponseEntity<String> HandleInvalidTokenException(
-//			InvalidTokenException ex) {
-//
-//		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-//				.body(ex.getMessage());
-//	}
+	@ExceptionHandler(InvalidCredentialsException.class)
+	public ResponseEntity<String> handleInvalidCredentialsException(
+			InvalidCredentialsException ex) {
+
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+				.body(ex.getMessage());
+	}
+
+	@ExceptionHandler(InvalidTokenException.class)
+	public ResponseEntity<String> HandleInvalidTokenException(
+			InvalidTokenException ex) {
+
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+				.body(ex.getMessage());
+	}
 
 //	@ExceptionHandler(Exception.class)
 //	public ResponseEntity<String> handleException(Exception ex) {

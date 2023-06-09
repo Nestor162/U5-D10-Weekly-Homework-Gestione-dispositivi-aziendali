@@ -38,7 +38,7 @@ public class DeviceController {
 		return deviceService.getAll();
 	}
 
-	// 3. READ (GET METHOD) - http://localhost:3001/devoces/:deviceId
+	// 3. READ (GET METHOD) - http://localhost:3001/devices/:deviceId
 	@GetMapping("/{deviceId}")
 	public Device getSpecificUserById(@PathVariable String deviceId) {
 		return deviceService.getDeviceById(UUID.fromString(deviceId));

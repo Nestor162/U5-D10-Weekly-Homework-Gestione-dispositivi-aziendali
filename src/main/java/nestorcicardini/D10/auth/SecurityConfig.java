@@ -29,9 +29,9 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(
 				auth -> auth.requestMatchers("/auth/**").permitAll());
 		http.authorizeHttpRequests(
-				auth -> auth.requestMatchers("/users/**").permitAll()); // authenticated());
+				auth -> auth.requestMatchers("/users/**").authenticated());
 		http.authorizeHttpRequests(
-				auth -> auth.requestMatchers("/devices/**").permitAll()); // authenticated());
+				auth -> auth.requestMatchers("/devices/**").authenticated());
 
 //		http.addFilterBefore(jwtAuthFilter,
 //				UsernamePasswordAuthenticationFilter.class);
