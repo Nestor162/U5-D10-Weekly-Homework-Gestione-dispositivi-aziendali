@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 @Getter
-public class registerUserPayload {
+public class RegisterUserPayload {
 
 	@NotNull(message = "Il nome non puo essere Null")
 	@Size(min = 3, max = 30, message = "Il nome non rispetta i parametri (Min 3 / Max 30 caratteri)")

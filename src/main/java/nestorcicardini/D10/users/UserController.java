@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import nestorcicardini.D10.users.payloads.registerUserPayload;
+import nestorcicardini.D10.users.payloads.RegisterUserPayload;
 
 @RestController
 @RequestMapping("/users")
@@ -29,7 +29,7 @@ public class UserController {
 
 	// 1. CREATE (POST METHOD) - http://localhost:3001/users
 	@PostMapping("")
-	public User saveUser(@RequestBody @Validated registerUserPayload body) {
+	public User saveUser(@RequestBody @Validated RegisterUserPayload body) {
 		return userService.createUser(body);
 	}
 

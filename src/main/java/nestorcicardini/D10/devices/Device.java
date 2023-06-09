@@ -2,9 +2,9 @@ package nestorcicardini.D10.devices;
 
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -22,11 +22,10 @@ public class Device {
 	@Id
 	@GeneratedValue
 	private UUID id;
+	@Enumerated(EnumType.STRING)
 	private DeviceType deviceType;
+	@Enumerated(EnumType.STRING)
 	private DeviceStatus deviceStatus;
-
-	@Autowired
-	private UUID idUtente;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -40,12 +39,10 @@ public class Device {
 		available, assigned, maintenance, disposed
 	}
 
-	public Device(DeviceType deviceType, DeviceStatus deviceStatus,
-			UUID idUtente) {
+	public Device(DeviceType deviceType, DeviceStatus deviceStatus) {
 		super();
 		this.deviceType = deviceType;
 		this.deviceStatus = deviceStatus;
-		this.idUtente = idUtente;
 	}
 
 }

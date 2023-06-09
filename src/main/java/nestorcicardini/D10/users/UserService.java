@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import nestorcicardini.D10.exceptions.BadRequestException;
 import nestorcicardini.D10.exceptions.NotFoundException;
-import nestorcicardini.D10.users.payloads.registerUserPayload;
+import nestorcicardini.D10.users.payloads.RegisterUserPayload;
 
 @Service
 public class UserService {
@@ -16,7 +16,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
-	public User createUser(registerUserPayload payload) {
+	public User createUser(RegisterUserPayload payload) {
 
 		// Prima devo verificare se su db già esiste l'email
 		userRepo.findByEmail(payload.getEmail()).ifPresent(user -> {
