@@ -14,7 +14,7 @@ import nestorcicardini.D10.auth.payloads.TokenPayload;
 import nestorcicardini.D10.exceptions.InvalidCredentialsException;
 import nestorcicardini.D10.users.User;
 import nestorcicardini.D10.users.UserService;
-import nestorcicardini.D10.users.payloads.RegisterUserPayload;
+import nestorcicardini.D10.users.payloads.RegisterNormalUserPayload;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,9 +24,9 @@ public class AuthController {
 
 	@PostMapping("/register")
 	public ResponseEntity<User> userRegister(
-			@RequestBody @Validated RegisterUserPayload payload) {
+			@RequestBody @Validated RegisterNormalUserPayload payload) {
 
-		User utenteCreato = userService.createUser(payload);
+		User utenteCreato = userService.registerUser(payload);
 		return new ResponseEntity<>(utenteCreato, HttpStatus.CREATED);
 
 	}

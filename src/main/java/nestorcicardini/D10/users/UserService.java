@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import nestorcicardini.D10.exceptions.BadRequestException;
 import nestorcicardini.D10.exceptions.NotFoundException;
+import nestorcicardini.D10.users.payloads.RegisterNormalUserPayload;
 import nestorcicardini.D10.users.payloads.RegisterUserPayload;
 
 @Service
@@ -16,6 +17,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
+	// Questo metodo serve per l'endpoin /users. Quindi sipuo scegliere il ruolo
+	// e creare dei nuovi admin
 	public User createUser(RegisterUserPayload payload) {
 
 		// Prima devo verificare se su db già esiste l'email
@@ -27,6 +30,23 @@ public class UserService {
 		User createdUser = new User(payload.getSurname(), payload.getName(),
 				payload.getSurname(), payload.getEmail(), payload.getPassword(),
 				UserRole.valueOf(payload.getUserRole()));
+
+		return userRepo.save(createdUser);
+	}
+
+	// Questo metodo e per l'endpoit /auth. Quindi non si potra scegliere il
+	// ruolo
+	public User registerUser(RegisterNormalUserPayload payload) {
+
+		// Prima devo verificare se su db già esiste l'email
+		userRepo.findByEmail(payload.getEmail()).ifPresent(user -> {
+			throw new BadRequestException(
+					"The email " + user.getEmail() + " is already in use!");
+		});
+
+		User createdUser = new User(payload.getSurname(), payload.getName(),
+				payload.getSurname(), payload.getEmail(), payload.getPassword(),
+				UserRole.USER);
 
 		return userRepo.save(createdUser);
 	}
